@@ -7,4 +7,7 @@ python3 -m venv .venv
 
 # 安装依赖
 pip install -r requirements.txt
+
+# 运行
+uvicorn main:app --reload
 ```
