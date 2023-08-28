@@ -10,7 +10,7 @@ async def get_token_header(x_token: str = Header(...)):
 
 async def verify_token(token: str):
     credentials_exception = HTTPException(
-        status_code=401, detail="Could not validate credentials"
+        status_code=400, detail="Could not validate credentials"
     )
     try:
         jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])

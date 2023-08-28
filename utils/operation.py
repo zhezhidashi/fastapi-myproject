@@ -24,3 +24,10 @@ def check_user_exist(db, username: str):
     if user:
         return True
     return False
+
+# 删除用户
+def delete_users(db: Session, user: models.UserDelete):
+    db_user = db.query(tables.User).filter(tables.User.username == user.username).first()
+    db.delete(db_user)
+    db.commit()
+    return db_user

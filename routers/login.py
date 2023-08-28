@@ -15,7 +15,7 @@ router = APIRouter(
 
 # 用户登录
 @router.post("/", response_model=models.Token)
-async def login_for_access_token(db: Session = Depends(get_db), user: models.UserLogin = Depends()):
+async def login_for_access_token(user : models.UserLogin, db: Session = Depends(get_db)):
     result = security.authenticate_user(db, user.username, user.passwd)
     if not result:
         raise HTTPException(status_code=400, detail="Incorrect username or password")

@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from routers import users, login
 from core.database import Base, engine
@@ -15,6 +16,9 @@ app = FastAPI(
 # 导入路由
 app.include_router(users.router)
 app.include_router(login.router)
+
+# 挂载静态文件
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 async def read_root():

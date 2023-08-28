@@ -23,7 +23,14 @@ async def read_users(db: Session = Depends(get_db)):
 @router.post("/add-user", response_model=models.User)
 async def add_users(user: models.UserCreate, db: Session = Depends(get_db)):
     if(operation.check_user_exist(db, user.username)):
-        raise HTTPException(status_code=401, detail="username " + user.username + " already exists"
+        raise HTTPException(status_code=400, detail="username " + user.username + " already exists"
     )
     return operation.create_users(db, user)
 
+# 删除一个用户
+@router.post("/delete-user", response_model=models.User)
+async def delete_users(user: models.UserDelete, db: Session = Depends(get_db)):
+    if(not operation.check_user_exist(db, user.username)):
+        raise HTTPException(status_code=400, detail="username " + user.username + " not exists"
+    )
+    return operation.delete_users(db, user)

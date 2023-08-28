@@ -19,6 +19,10 @@ class User(UserBase):
     class Config:
         orm_mode = True
 
+# 删除用户
+class UserDelete(UserBase):
+    pass
+
 # Token相关
 class Token(BaseModel):
     access_token: str

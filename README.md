@@ -10,4 +10,7 @@ pip install -r requirements.txt
 
 # 运行
 uvicorn main:app --reload
+
+# 测试
+pytest
 ```
