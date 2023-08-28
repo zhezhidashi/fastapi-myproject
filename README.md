@@ -1,3 +1,5 @@
+Python环境
+
 ```shell
 # 初始化虚拟环境
 python3 -m venv .venv
@@ -13,4 +15,10 @@ uvicorn main:app --reload
 
 # 测试
 pytest
+```
+
+设置mysql
+用户名 root，密码 zzh12345
+```sql
+create database myproject
 ```
