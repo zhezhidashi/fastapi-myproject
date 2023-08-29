@@ -2,8 +2,8 @@ import os
 
 # 设置守护进程
 daemon=True
-# 监听内网端口8000
-bind='0.0.0.0:8000'
+# 监听内网端口80
+bind='0.0.0.0:80'
 # 设置进程文件目录
 pidfile='./gunicorn.pid'
 chdir='./' # 工作目录
